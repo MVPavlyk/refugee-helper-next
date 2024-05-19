@@ -5,16 +5,27 @@ import {useForm} from 'react-hook-form';
 import {TSignIn} from '@/types/authTypes';
 import {authServices} from '@/services/auth.service';
 import Button from '@/components/elements/Button';
+import {useRouter} from 'next/navigation';
+import LOCAL_STORAGE_KEYS from '@/lib/constants/localStorageKeys';
 
 const LoginForm = () => {
     const methods = useForm()
+    const router = useRouter()
 
     const {register, handleSubmit} = methods
 
     const logger = async (obj: TSignIn) => {
-        const data = await authServices.signIn(obj)
+        try {
+            const data = await authServices.signIn(obj)
 
-        console.log(data)
+            if (data?.token) {
+                localStorage.setItem(LOCAL_STORAGE_KEYS.TOKEN, data.token)
+
+                router.push('/')
+            }
+        } catch (e) {
+            console.error(e)
+        }
     }
 
     return (

@@ -3,11 +3,11 @@ import React, {ReactNode} from 'react';
 type TButton = {
     children: ReactNode,
     type: 'primary' | 'secondary',
-    onClick?: void
+    onClick?: () => void
 }
 
 const Button = ({children, type = 'primary', onClick}: TButton) => {
-        let style: string
+    let style: string
 
     switch (type) {
         case 'secondary':
@@ -18,7 +18,7 @@ const Button = ({children, type = 'primary', onClick}: TButton) => {
     }
 
     return (
-        <button onClick={() => onClick} className={style}>
+        <button onClick={onClick} className={style}>
             {children}
         </button>
     );

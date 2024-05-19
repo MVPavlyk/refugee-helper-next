@@ -17,3 +17,19 @@ export type THelpTicketHistory = {
     record: string
     dateTime: string
 }
+
+export type TPaginator = {
+    items: THelpTicket[]
+    pageNumber: number
+    pageSize: number
+    totalItems: number
+    totalPages: number
+    hasPreviousPage: boolean
+    hasNextPage: boolean
+}
+
+export type TSearchObj = {
+    PageNumber?: number,
+    PageSize?: number,
+    Title?:string
+}
