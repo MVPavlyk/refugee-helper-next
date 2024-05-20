@@ -7,6 +7,7 @@ import {authServices} from '@/services/auth.service';
 import Button from '@/components/elements/Button';
 import LOCAL_STORAGE_KEYS from '@/lib/constants/localStorageKeys';
 import User from '@/components/units/User';
+import Link from 'next/link';
 
 const UserNavigation = () => {
     const [wait, setWait] = useState(true)
@@ -37,6 +38,7 @@ const UserNavigation = () => {
         <div className='flex items-center gap-x-4'>
             {user?.id ?
                 <>
+                    <Link className='text-green-400' href='/ticket/create'>Створити запит</Link>
                     <User user={user}/>
                     <Button onClick={() => logout()} type='secondary'>Вихід</Button>
                 </>

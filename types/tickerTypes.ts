@@ -7,7 +7,7 @@ export type THelpTicket = {
     locationLongitude: number
     createdAt: string
     history: THelpTicketHistory[]
-    images: any[]
+    images: TImage[]
     userId: string
     volunteerId: any
     comments: any[]
@@ -32,4 +32,8 @@ export type TSearchObj = {
     PageNumber?: number,
     PageSize?: number,
     Title?:string
+}
+
+export type TImage = {
+    url: string
 }

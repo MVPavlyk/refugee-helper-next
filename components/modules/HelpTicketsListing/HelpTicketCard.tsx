@@ -3,6 +3,7 @@ import {THelpTicket} from '@/types/tickerTypes';
 import Link from 'next/link';
 import formatDateTime from '@/lib/helpers/formatDateTime';
 import TICKET_STATUSES from '@/lib/constants/ticketStatuses';
+import cardStringCutter from '@/lib/helpers/cardStringCutter';
 
 const HelpTicketCard = ({ticket}: { ticket: THelpTicket }) => {
     const {id, title, description, createdAt, status} = ticket
@@ -14,7 +15,7 @@ const HelpTicketCard = ({ticket}: { ticket: THelpTicket }) => {
 
             <div className='flex flex-col gap-y-4 '>
                 <h4 className='text-xl text-green-400'>{title}</h4>
-                <p className='text'>{description}</p>
+                <p className='text'>{cardStringCutter(description)}</p>
             </div>
 
             <div className='flex items-center gap-x-4'>

@@ -1,28 +1,12 @@
-'use client'
-
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {THelpTicket} from '@/types/tickerTypes';
 import formatDateTime from '@/lib/helpers/formatDateTime';
 import User from '@/components/units/User';
-import {TUser} from '@/types/authTypes';
-import LOCAL_STORAGE_KEYS from '@/lib/constants/localStorageKeys';
-import {userService} from '@/services/user.service';
 import TICKET_STATUSES from '@/lib/constants/ticketStatuses';
+import ImagesGallery from '@/components/units/ImagesGallery';
 
 const TicketView = ({ticket}: { ticket: THelpTicket }) => {
-    const {title, description, status, createdAt, userId} = ticket;
-
-    const [user, setUser] = useState<TUser | null>(null)
-
-    const token = typeof window !== 'undefined' ? window.localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN) : null
-
-
-    useEffect(() => {
-        if (userId && token) {
-            userService.getOne(userId, token).then(u => setUser(u))
-        }
-    }, [userId, token])
-
+    const {title, description, status, createdAt, user, images} = ticket;
 
     return (
         <section className='px-20 py-10'>
@@ -39,7 +23,8 @@ const TicketView = ({ticket}: { ticket: THelpTicket }) => {
                 </div>
                 {user && <User user={user}/>}
             </div>
-            <p className='text-2xl mt-10'>{description}</p>
+            <p className='text-2xl mt-10 whitespace-pre-line'>{description}</p>
+            <ImagesGallery images={images}/>
         </section>
     );
 };
