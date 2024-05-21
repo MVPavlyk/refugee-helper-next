@@ -5,28 +5,35 @@ import User from '@/components/units/User';
 import TICKET_STATUSES from '@/lib/constants/ticketStatuses';
 import ImagesGallery from '@/components/units/ImagesGallery';
 import HandleBlock from '@/components/modules/TicketView/HandleBlock';
+import History from '@/components/units/History';
 
 const TicketView = ({ticket}: { ticket: THelpTicket }) => {
-    const {title, description, status, createdAt, user, images} = ticket;
+    const {title, description, status, createdAt, user, images, history} = ticket;
+
+    console.log(history)
 
     return (
-        <section className='px-20 py-10'>
-            <div className='flex items-center justify-between'>
-                <div className='flex flex-col gap-y-3'>
-                    <h1 className='text-[40px] text-green-400'>{title}</h1>
-                    <div className='flex items-center gap-x-4'>
-                        <div className='text-blue-900'>{formatDateTime(createdAt)}</div>
-                        <div className='w-[1px] h-4 bg-green-400'/>
-                        <div className='text-green-400'>
-                            {TICKET_STATUSES[status]}
+        <section className='px-20 py-10 flex gap-x-10'>
+            <div>
+                <div className='flex items-center justify-between'>
+                    <div className='flex flex-col gap-y-3'>
+                        <h1 className='text-[40px] text-green-400'>{title}</h1>
+                        <div className='flex items-center gap-x-4'>
+                            <div className='text-blue-900'>{formatDateTime(createdAt)}</div>
+                            <div className='w-[1px] h-4 bg-green-400'/>
+                            <div className='text-green-400'>
+                                {TICKET_STATUSES[status]}
+                            </div>
                         </div>
                     </div>
+                    {user && <User user={user}/>}
                 </div>
-                {user && <User user={user}/>}
+                <HandleBlock ticket={ticket}/>
+                <p className='text-2xl mt-10 whitespace-pre-line'>{description}</p>
+                <ImagesGallery images={images}/>
             </div>
-            <HandleBlock ticket={ticket}/>
-            <p className='text-2xl mt-10 whitespace-pre-line'>{description}</p>
-            <ImagesGallery images={images}/>
+            <History history={history}/>
+
         </section>
     );
 };
