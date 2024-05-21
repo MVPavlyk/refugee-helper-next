@@ -2,7 +2,6 @@ import React from 'react';
 
 const LogoMain = () => {
     return (
-
         <svg width="147" height="42" viewBox="0 0 147 42" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_503_306)">
                 <g clipPath="url(#clip1_503_306)">

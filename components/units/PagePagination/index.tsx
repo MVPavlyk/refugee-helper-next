@@ -4,9 +4,10 @@ import React, {useCallback} from 'react';
 import {TPaginator} from '@/types/tickerTypes';
 import {twMerge} from 'tailwind-merge'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation';
+import {TUserPaginator} from '@/types/authTypes';
 
 
-const PagePagination = ({response}: { response: TPaginator }) => {
+const PagePagination = ({response}: { response: TPaginator | TUserPaginator }) => {
     const router = useRouter()
     const pathname = usePathname()
     const searchParams = useSearchParams()

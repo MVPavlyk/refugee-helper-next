@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react';
 import AuthLayout from '@/components/layouts/AuthLayout';
 import CommonWrapper from '@/components/modules/CommonWrapper';

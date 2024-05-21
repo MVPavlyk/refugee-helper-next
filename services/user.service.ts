@@ -1,12 +1,16 @@
-import {TUser} from '@/types/authTypes';
+import {TUserPaginator} from '@/types/authTypes';
 import {axiosServices} from '@/services/axios.service';
+import buildQueryParams from '@/lib/helpers/buildQueryParams';
 import withAuth from '@/lib/helpers/withAuth';
 
 export const userService = {
-    getOne: (userId: string, token: string): Promise<TUser> => axiosServices.get(`/api/users/${userId}`, {
-            headers: {
-                Authorization: withAuth(token)
-            }
+    search: (searchObj): Promise<TUserPaginator> => axiosServices.get(`/api/users/search${buildQueryParams(searchObj)}`).then(v => v.data),
+    patchRole: (id: string, role: string, token: string) => axiosServices.patch(`/api/roles${buildQueryParams({
+        id,
+        role
+    })}`, {}, {
+        headers: {
+            Authorization: withAuth(token)
         }
-    ).then(v => v.data)
+    })
 }

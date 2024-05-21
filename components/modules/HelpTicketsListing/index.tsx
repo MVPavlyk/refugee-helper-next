@@ -13,7 +13,7 @@ export default async function HelpTicketsListing({searchParams}: { searchParams?
 
     return (
         <>
-            <PageFiltration/>
+            <PageFiltration searchCase='ticket'/>
             <section className='px-20 py-10 grid grid-cols-3 gap-4'>
                 {!!tickets.length &&
                     tickets.map(ticket => <HelpTicketCard key={ticket.id} ticket={ticket}/>)

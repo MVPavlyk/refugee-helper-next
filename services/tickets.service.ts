@@ -9,5 +9,18 @@ export const ticketsService = {
     getOne: (ticketId: string): Promise<THelpTicket> => axiosServices.get(`/api/helptickets/${ticketId}`).then(v => v.data),
     createTicket: (data: FormData, token: string): Promise<THelpTicket> => axiosServices.post('/api/helptickets', data, {
         headers: {Authorization: withAuth(token)}
-    }).then(v => v.data)
+    }).then(v => v.data),
+    assign: (ticketId: string, token: string): Promise<any> => axiosServices.patch(`/api/helptickets/${ticketId}/assign`, {}, {
+        headers: {Authorization: withAuth(token)}
+    }),
+    unassign: (ticketId: string, token: string): Promise<any> => axiosServices.patch(`/api/helptickets/${ticketId}/unassign`, {}, {
+        headers: {Authorization: withAuth(token)}
+    }),
+    changeStatus: (ticketId: string, token: string, status: number): Promise<any> => axiosServices.patch(`/api/helptickets/${ticketId}/status?status=${status}`, {}, {
+        headers: {Authorization: withAuth(token)}
+    }),
+
+    delete:  (ticketId: string, token: string): Promise<any> => axiosServices.delete(`/api/helptickets/${ticketId}`,  {
+        headers: {Authorization: withAuth(token)}
+    })
 }

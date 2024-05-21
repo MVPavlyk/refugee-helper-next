@@ -31,7 +31,10 @@ export type TPaginator = {
 export type TSearchObj = {
     PageNumber?: number,
     PageSize?: number,
-    Title?:string
+    Title?: string,
+    Name?: string,
+    UserIds?: string,
+    VolunteerIds?: string
 }
 
 export type TImage = {

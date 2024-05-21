@@ -43,6 +43,7 @@ const UserNavigation = () => {
                 <>
                     {isAdmin && <Link className='text-green-400' href='/admin'>Адмін панель</Link>}
                     <Link className='text-green-400' href='/ticket/create'>Створити запит</Link>
+                    <Link className='text-green-400' href='/ticket/dashboard'>Мої запити</Link>
                     <User user={user}/>
                     <Button onClick={() => logout()} type='secondary'>Вихід</Button>
                 </>

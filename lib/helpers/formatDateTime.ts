@@ -23,9 +23,8 @@ function formatDateTime(dateTimeStr: string): string {
     const year = date.getFullYear();
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
-    const seconds = date.getSeconds().toString().padStart(2, '0');
 
-    return `${day} ${month} ${year} року, ${hours}:${minutes}:${seconds}`;
+    return `${day} ${month} ${year} року, ${hours}:${minutes}`;
 }
 
 function pluralize(count: number, singular: string, genitiveSingular: string, plural: string): string {

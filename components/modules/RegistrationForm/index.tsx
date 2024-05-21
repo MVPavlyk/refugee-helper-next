@@ -38,11 +38,6 @@ const RegistrationForm = () => {
             />
             <input
                 className='border border-green-400 h-10 w-full px-4 outline-none rounded-lg py-2 text-lg'
-                {...register('userName')}
-                placeholder='Юзернейм' type="text"
-            />
-            <input
-                className='border border-green-400 h-10 w-full px-4 outline-none rounded-lg py-2 text-lg'
                 {...register('email')}
                 placeholder='Електронна пошта' type="text"
             />

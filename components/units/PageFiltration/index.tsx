@@ -4,10 +4,13 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {useDebouncer} from '@/lib/hooks/useDebouncer';
 import {usePathname, useSearchParams, useRouter} from 'next/navigation';
 
-const PageFiltration = () => {
+const PageFiltration = ({searchCase}: { searchCase: 'ticket' | 'user' }) => {
     const searchParams = useSearchParams()
 
-    const paramsTitle = searchParams.get('Title') || ''
+    const searchParameter = searchCase === 'ticket' ? 'Title' : 'Name'
+
+
+    const paramsTitle = searchParams.get(searchParameter) || ''
 
     const [value, setValue] = useState(String(paramsTitle))
 
@@ -19,7 +22,7 @@ const PageFiltration = () => {
 
     const createQueryString = useCallback(
         (name: string, value: string) => {
-            if(!value) return ''
+            if (!value) return ''
 
             const params = new URLSearchParams(searchParams.toString())
             params.set(name, value)
@@ -31,7 +34,7 @@ const PageFiltration = () => {
 
     useEffect(() => {
         if (debouncedValue.length || paramsTitle.length) {
-            router.push(pathname + '?' + createQueryString('Title', debouncedValue))
+            router.push(pathname + '?' + createQueryString(searchParameter, debouncedValue))
         }
     }, [debouncedValue])
 
@@ -41,7 +44,8 @@ const PageFiltration = () => {
     return (
         <section className='w-full h-12 border-b border-gray-400 px-20 flex items-center justify-between'>
             <div/>
-            <input className='text-lg outline-none border-b-2 border-green-400' placeholder='Пошук' type="text" value={value} onChange={(e) => setValue(e.target.value)}/>
+            <input className='text-lg outline-none border-b-2 border-green-400' placeholder='Пошук' type="text"
+                   value={value} onChange={(e) => setValue(e.target.value)}/>
         </section>
     );
 };

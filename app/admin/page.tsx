@@ -1,12 +1,13 @@
 import React from 'react';
 import PageLayout from '@/components/layouts/PageLayout';
+import UsersListing from '@/components/modules/UsersListing';
 
-const Page = () => {
+const Page = ({searchParams}: { searchParams?: { [key: string]: string | string[] | undefined } }) => {
+
+
     return (
         <PageLayout>
-            <section className='px-20 py-10'>
-                admin
-            </section>
+            <UsersListing searchParams={searchParams}/>
         < /PageLayout>
     );
 };

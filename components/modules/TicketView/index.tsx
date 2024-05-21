@@ -4,6 +4,7 @@ import formatDateTime from '@/lib/helpers/formatDateTime';
 import User from '@/components/units/User';
 import TICKET_STATUSES from '@/lib/constants/ticketStatuses';
 import ImagesGallery from '@/components/units/ImagesGallery';
+import HandleBlock from '@/components/modules/TicketView/HandleBlock';
 
 const TicketView = ({ticket}: { ticket: THelpTicket }) => {
     const {title, description, status, createdAt, user, images} = ticket;
@@ -23,6 +24,7 @@ const TicketView = ({ticket}: { ticket: THelpTicket }) => {
                 </div>
                 {user && <User user={user}/>}
             </div>
+            <HandleBlock ticket={ticket}/>
             <p className='text-2xl mt-10 whitespace-pre-line'>{description}</p>
             <ImagesGallery images={images}/>
         </section>
