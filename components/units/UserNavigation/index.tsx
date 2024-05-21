@@ -8,11 +8,14 @@ import Button from '@/components/elements/Button';
 import LOCAL_STORAGE_KEYS from '@/lib/constants/localStorageKeys';
 import User from '@/components/units/User';
 import Link from 'next/link';
+import USER_ROLES from '@/lib/constants/userRoles';
 
 const UserNavigation = () => {
     const [wait, setWait] = useState(true)
 
     const [user, setUser] = useState<TUser | null>(null)
+
+    const isAdmin = user?.role === USER_ROLES.ADMIN
 
     const token = typeof window !== 'undefined' ? window.localStorage.getItem(LOCAL_STORAGE_KEYS.TOKEN) : null
 
@@ -38,6 +41,7 @@ const UserNavigation = () => {
         <div className='flex items-center gap-x-4'>
             {user?.id ?
                 <>
+                    {isAdmin && <Link className='text-green-400' href='/admin'>Адмін панель</Link>}
                     <Link className='text-green-400' href='/ticket/create'>Створити запит</Link>
                     <User user={user}/>
                     <Button onClick={() => logout()} type='secondary'>Вихід</Button>
