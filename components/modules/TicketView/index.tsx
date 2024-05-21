@@ -8,7 +8,7 @@ import HandleBlock from '@/components/modules/TicketView/HandleBlock';
 import History from '@/components/units/History';
 
 const TicketView = ({ticket}: { ticket: THelpTicket }) => {
-    const {title, description, status, createdAt, user, images, history} = ticket;
+    const {title, description, status, createdAt, user, images, history, volunteer} = ticket;
 
     console.log(history)
 
@@ -21,8 +21,9 @@ const TicketView = ({ticket}: { ticket: THelpTicket }) => {
                         <div className='flex items-center gap-x-4'>
                             <div className='text-blue-900'>{formatDateTime(createdAt)}</div>
                             <div className='w-[1px] h-4 bg-green-400'/>
-                            <div className='text-green-400'>
+                            <div className='text-green-400 flex items-center gap-x-4'>
                                 {TICKET_STATUSES[status]}
+                                {!!volunteer && <p>Волонтер: {volunteer.firstName} {volunteer.lastName}</p>}
                             </div>
                         </div>
                     </div>

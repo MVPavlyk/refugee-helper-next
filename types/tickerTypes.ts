@@ -1,3 +1,5 @@
+import {TUser} from '@/types/authTypes';
+
 export type THelpTicket = {
     id: string
     title: string
@@ -9,7 +11,9 @@ export type THelpTicket = {
     history: THelpTicketHistory[]
     images: TImage[]
     userId: string
-    volunteerId: any
+    user: TUser,
+    volunteerId?: string,
+    volunteer?: TUser,
     comments: any[]
 }
 
