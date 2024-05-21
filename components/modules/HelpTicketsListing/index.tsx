@@ -5,7 +5,7 @@ import PagePagination from '@/components/units/PagePagination';
 import PageFiltration from '@/components/units/PageFiltration';
 
 export default async function HelpTicketsListing({searchParams}: { searchParams?: { [key: string]: string | string[] | undefined } }) {
-    const {PageNumber = 1, PageSize = 12, Title = ''} = searchParams || {};
+    const {PageNumber = 1, PageSize = 9, Title = ''} = searchParams || {};
 
     const response = await ticketsService.search({PageNumber, PageSize, Title});
 
