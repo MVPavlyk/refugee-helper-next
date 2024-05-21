@@ -10,8 +10,6 @@ import History from '@/components/units/History';
 const TicketView = ({ticket}: { ticket: THelpTicket }) => {
     const {title, description, status, createdAt, user, images, history, volunteer} = ticket;
 
-    console.log(history)
-
     return (
         <section className='px-20 py-10 flex gap-x-10'>
             <div>
