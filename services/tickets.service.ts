@@ -20,7 +20,10 @@ export const ticketsService = {
         headers: {Authorization: withAuth(token)}
     }),
 
-    delete:  (ticketId: string, token: string): Promise<any> => axiosServices.delete(`/api/helptickets/${ticketId}`,  {
+    delete: (ticketId: string, token: string): Promise<any> => axiosServices.delete(`/api/helptickets/${ticketId}`, {
         headers: {Authorization: withAuth(token)}
-    })
+    }),
+    addComment: (ticketId: string, token: string, text: string): Promise<THelpTicket> => axiosServices.post(`/api/helptickets/${ticketId}/comment`, {text}, {
+        headers: {Authorization: withAuth(token)}
+    }).then(v => v.data)
 }

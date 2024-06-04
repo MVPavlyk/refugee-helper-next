@@ -14,8 +14,16 @@ export type THelpTicket = {
     user: TUser,
     volunteerId?: string,
     volunteer?: TUser,
-    comments: any[]
+    comments: TComment[]
 }
+
+export type TComment = {
+    id: string
+    userId: string
+    text: string
+    createdDate: string
+}
+
 
 export type THelpTicketHistory = {
     record: string

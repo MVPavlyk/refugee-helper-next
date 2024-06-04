@@ -1,4 +1,4 @@
-import {TUserPaginator} from '@/types/authTypes';
+import {TUser, TUserPaginator} from '@/types/authTypes';
 import {axiosServices} from '@/services/axios.service';
 import buildQueryParams from '@/lib/helpers/buildQueryParams';
 import withAuth from '@/lib/helpers/withAuth';
@@ -12,5 +12,6 @@ export const userService = {
         headers: {
             Authorization: withAuth(token)
         }
-    })
+    }),
+    getUserById: (userId): Promise<TUser> => axiosServices.get(`/api/users/${userId}`).then(v => v.data)
 }

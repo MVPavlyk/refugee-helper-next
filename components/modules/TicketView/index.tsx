@@ -6,9 +6,10 @@ import TICKET_STATUSES from '@/lib/constants/ticketStatuses';
 import ImagesGallery from '@/components/units/ImagesGallery';
 import HandleBlock from '@/components/modules/TicketView/HandleBlock';
 import History from '@/components/units/History';
+import CommentsBlock from '@/components/modules/CommentsBlock';
 
 const TicketView = ({ticket}: { ticket: THelpTicket }) => {
-    const {title, description, status, createdAt, user, images, history, volunteer} = ticket;
+    const {title, description, status, createdAt, user, images, history, volunteer, comments, id} = ticket;
 
     return (
         <section className='px-20 py-10 flex gap-x-10'>
@@ -30,6 +31,7 @@ const TicketView = ({ticket}: { ticket: THelpTicket }) => {
                 <HandleBlock ticket={ticket}/>
                 <p className='text-2xl mt-10 whitespace-pre-line'>{description}</p>
                 <ImagesGallery images={images}/>
+                <CommentsBlock comments={comments} ticketId={id}/>
             </div>
             <History history={history}/>
 
